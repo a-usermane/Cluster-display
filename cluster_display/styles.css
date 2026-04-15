@@ -1,0 +1,193 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f6fb;
+  color: #222;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+h1 {
+  text-align: center;
+  margin: 8px 0 16px;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid #d8deea;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.controls .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.hint {
+  color: #667089;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+input,
+select,
+button {
+  height: 34px;
+  border: 1px solid #bdc6da;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+button {
+  background: #2f6feb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+button:disabled {
+  background: #9ca7c2;
+  cursor: not-allowed;
+}
+
+.action-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.top-gap {
+  margin-top: 8px;
+}
+
+.inline-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-hint {
+  margin-top: 8px;
+  color: #4f5d78;
+  font-size: 13px;
+}
+
+.chart-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chart {
+  width: min(100%, 860px);
+  height: auto;
+  border: 1px solid #d3d9e8;
+  background: #fff;
+}
+
+.formula-block {
+  padding: 10px;
+  border: 1px dashed #cbd4e7;
+  border-radius: 8px;
+  margin-top: 10px;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+.legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.math-block {
+  border: 1px solid #e3e9f5;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 6px 0;
+}
+
+.math-step {
+  margin: 4px 0;
+  padding-left: 8px;
+  border-left: 3px solid #d2dcf3;
+}
+
+.compare-row {
+  margin: 6px 0;
+}
+
+.bar-wrap {
+  height: 8px;
+  background: #ebeff8;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #5a88ec;
+}
+
+.algo-group {
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.equation {
+  font-family: Consolas, "Courier New", monospace;
+  background: #f7f9fd;
+  border: 1px solid #e3e9f5;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin: 4px 0;
+}
+
+.mono {
+  font-family: Consolas, "Courier New", monospace;
+}

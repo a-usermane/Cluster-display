@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>聚类算法可视化</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>聚类算法展示</h1>
+
+      <section class="panel controls">
+        <h2>数据参数</h2>
+        <div class="grid">
+          <label>分几类
+            <span class="hint">生成数据时的真实类别数量</span>
+            <input id="numClusters" type="number" min="1" max="12" value="3" />
+          </label>
+          <label>每类样本数
+            <span class="hint">每一类包含多少个点</span>
+            <input id="pointsPerCluster" type="number" min="5" max="500" value="80" />
+          </label>
+          <label>高斯标准差
+            <span class="hint">每类点的聚集程度</span>
+            <input id="stdDev" type="number" min="0.5" step="0.5" value="6" />
+          </label>
+          <label>中心分散度
+            <span class="hint">各类中心彼此分开程度</span>
+            <input id="spread" type="number" min="10" max="80" value="40" />
+          </label>
+          <label>随机种子
+            <span class="hint">固定后可复现实验结果</span>
+            <input id="seed" type="number" min="0" max="9999999" value="42" />
+          </label>
+        </div>
+        <div class="action-row">
+          <button id="generateBtn">生成高斯数据</button>
+          <button id="randomParamsBtn" type="button">随机一组参数</button>
+          <button id="resetBtn" type="button">一键重置</button>
+        </div>
+        <div id="statusHint" class="status-hint">准备就绪。</div>
+      </section>
+
+      <section class="panel chart-wrap">
+        <canvas id="chart" width="860" height="520" aria-label="坐标系画布"></canvas>
+      </section>
+
+      <section class="panel controls">
+        <h2>聚类参数</h2>
+        <div class="grid">
+          <label>算法
+            <span class="hint">选择后将显示对应参数</span>
+            <select id="algorithm">
+              <option value="kmeans">K-Means</option>
+              <option value="dbscan">DBSCAN</option>
+              <option value="agglomerative">Agglomerative</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="kmeansParams" class="grid algo-group">
+          <label>K（K-Means）
+            <span class="hint">希望聚成几类</span>
+            <input id="kmeansK" type="number" min="1" max="12" value="3" />
+          </label>
+          <label>最大迭代（K-Means）
+            <span class="hint">最多重复计算多少轮</span>
+            <input id="kmeansMaxIter" type="number" min="1" max="300" value="50" />
+          </label>
+          <label>收敛阈值（K-Means）
+            <span class="hint">质心变化小于该值即停止</span>
+            <input id="kmeansTol" type="number" min="0.0001" step="0.0001" value="0.001" />
+          </label>
+        </div>
+
+        <div id="dbscanParams" class="grid algo-group hidden">
+          <label>eps（DBSCAN）
+            <span class="hint">邻域半径，决定“附近”范围</span>
+            <input id="dbscanEps" type="number" min="0.5" step="0.5" value="8" />
+          </label>
+          <label>minPts（DBSCAN）
+            <span class="hint">成为核心点所需最少邻居数</span>
+            <input id="dbscanMinPts" type="number" min="2" max="30" value="6" />
+          </label>
+        </div>
+
+        <div id="aggloParams" class="grid algo-group hidden">
+          <label>K（Agglomerative）
+            <span class="hint">最终保留的簇数量</span>
+            <input id="aggloK" type="number" min="1" max="12" value="3" />
+          </label>
+        </div>
+
+        <button id="clusterBtn" disabled>执行聚类</button>
+        <div class="action-row top-gap">
+          <button id="playBtn" type="button" disabled>播放动画</button>
+          <button id="pauseBtn" type="button" disabled>暂停</button>
+          <button id="stepBtn" type="button" disabled>单步</button>
+          <label class="inline-control">速度
+            <select id="speedSelect">
+              <option value="1">1x</option>
+              <option value="2">2x</option>
+              <option value="4">4x</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel formula">
+        <h2>算法公式与过程</h2>
+        <div id="legend" class="legend"></div>
+        <div id="formulaSummary" class="formula-block"></div>
+        <div id="pointDetail" class="formula-block"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
